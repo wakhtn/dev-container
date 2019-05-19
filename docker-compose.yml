@@ -1,0 +1,21 @@
+version: '2'
+volumes:
+  docker:
+  code:
+  work:
+  root:
+services:
+  devserver:
+    #build: .
+    image: wakhtn/dev-container
+    restart: always
+    volumes:
+     - docker:/var/lib/docker
+     - root:/root
+     - code:/root/.vscode-remote
+     - work:/root/work
+    privileged: true
+    tty: true
+    container_name: dev
+    hostname: dev
+    working_dir: /root/work
